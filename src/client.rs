@@ -1647,7 +1647,7 @@ impl Client {
         conn: &mut Stream,
     ) -> ResultType<Option<Vec<u8>>> {
         let rs_pk = get_rs_pk(if key.is_empty() {
-            config::RS_PUB_KEY
+            crate::brand::rs_pub_key()
         } else {
             key
         });
