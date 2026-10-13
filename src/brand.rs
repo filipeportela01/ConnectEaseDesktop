@@ -1,5 +1,7 @@
 use hbb_common::config;
 
+pub const APP_NAME: &str = "ConnectEaseDesktop";
+
 // Injected at compile time (CI: GitHub Secrets) so the server and key never live in the source.
 // Empty or unset falls back to the upstream defaults.
 fn build_env(value: Option<&'static str>) -> Option<&'static str> {
@@ -15,6 +17,12 @@ pub fn rs_pub_key() -> &'static str {
 }
 
 pub fn init() {
+    {
+        let mut name = config::APP_NAME.write().unwrap();
+        if name.as_str() == "RustDesk" {
+            *name = APP_NAME.to_owned();
+        }
+    }
     if let Some(server) = rendezvous_server() {
         let mut prod = config::PROD_RENDEZVOUS_SERVER.write().unwrap();
         if prod.is_empty() {
