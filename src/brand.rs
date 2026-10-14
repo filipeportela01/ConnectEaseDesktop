@@ -1,6 +1,8 @@
 use hbb_common::config;
 
 pub const APP_NAME: &str = "ConnectEaseDesktop";
+pub const ENABLE_VOICE_CALL: bool = false;
+pub const ENABLE_VIEW_CAMERA: bool = false;
 
 // Injected at compile time (CI: GitHub Secrets) so the server and key never live in the source.
 // Empty or unset falls back to the upstream defaults.

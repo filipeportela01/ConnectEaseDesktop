@@ -2004,7 +2004,10 @@ impl Connection {
 
         #[cfg(any(target_os = "windows", target_os = "linux"))]
         {
-            platform_additions.insert("support_view_camera".into(), json!(true));
+            platform_additions.insert(
+                "support_view_camera".into(),
+                json!(crate::brand::ENABLE_VIEW_CAMERA),
+            );
         }
 
         #[cfg(any(target_os = "linux", target_os = "windows", target_os = "macos"))]
@@ -2890,7 +2893,9 @@ impl Connection {
                     self.file_transfer = Some((ft.dir, ft.show_hidden));
                 }
                 Some(login_request::Union::ViewCamera(_vc)) => {
-                    if !Self::permission(keys::OPTION_ENABLE_CAMERA, &self.control_permissions) {
+                    if !crate::brand::ENABLE_VIEW_CAMERA
+                        || !Self::permission(keys::OPTION_ENABLE_CAMERA, &self.control_permissions)
+                    {
                         self.send_login_error("No permission of viewing camera")
                             .await;
                         sleep(1.).await;
@@ -4030,7 +4035,10 @@ impl Connection {
                     }
                 }
                 Some(message::Union::VoiceCallRequest(request)) => {
-                    if request.is_connect {
+                    if request.is_connect && !crate::brand::ENABLE_VOICE_CALL {
+                        self.send(new_voice_call_response(request.req_timestamp, false))
+                            .await;
+                    } else if request.is_connect {
                         self.voice_call_request_timestamp = Some(
                             NonZeroI64::new(request.req_timestamp)
                                 .unwrap_or(NonZeroI64::new(get_time()).unwrap()),

@@ -727,3 +727,5 @@ const kBrandSourceLabel = 'github.com/filipeportela01/ConnectEaseDesktop';
 const kBrandPrivacyUrl =
     'https://github.com/filipeportela01/ConnectEaseDesktop/blob/master/PRIVACY.md';
 const kUpstreamUrl = 'https://github.com/rustdesk/rustdesk';
+const kEnableVoiceCall = false;
+const kEnableViewCamera = false;

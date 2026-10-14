@@ -2532,6 +2532,7 @@ connectMainDesktop(String id,
     String? password,
     String? connToken,
     bool? isSharedPassword}) async {
+  if (isViewCamera && !kEnableViewCamera) return;
   if (isFileTransfer) {
     await rustDeskWinManager.newFileTransfer(id,
         password: password,
@@ -2580,6 +2581,7 @@ connect(BuildContext context, String id,
     String? connToken,
     bool? isSharedPassword}) async {
   if (id == '') return;
+  if (isViewCamera && !kEnableViewCamera) return;
   if (!isDesktop || desktopType == DesktopType.main) {
     try {
       if (Get.isRegistered<IDTextEditingController>()) {
