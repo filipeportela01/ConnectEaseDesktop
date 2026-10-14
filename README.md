@@ -1,7 +1,7 @@
 <p align="center">
   <img src="res/icon.png" width="128" alt="ConnectEaseDesktop"><br>
   <b>ConnectEaseDesktop</b><br>
-  Acesso remoto da ION Sistemas — Android, iOS e Windows
+  Acesso remoto — Android, iOS e Windows
 </p>
 
 > Baseado no [RustDesk](https://github.com/rustdesk/rustdesk) © Purslane Tech Pte. Ltd. e contribuidores.
