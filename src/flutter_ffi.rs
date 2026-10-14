@@ -2957,6 +2957,7 @@ pub mod server_side {
         home_dir: JString,
         custom_client_config: JString,
     ) {
+        crate::brand::init();
         log::debug!("startServer from jvm");
         let mut env = env;
         if let Ok(app_dir) = env.get_string(&app_dir) {

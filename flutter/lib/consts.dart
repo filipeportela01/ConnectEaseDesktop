@@ -719,3 +719,13 @@ extension WindowsTargetExt on int {
 }
 
 const kCheckSoftwareUpdateFinish = 'check_software_update_finish';
+
+const kBrandName = 'ConnectEaseDesktop';
+const kBrandCompany = 'ION Sistemas';
+const kBrandSourceUrl = 'https://github.com/filipeportela01/ConnectEaseDesktop';
+const kBrandSourceLabel = 'github.com/filipeportela01/ConnectEaseDesktop';
+const kBrandPrivacyUrl =
+    'https://github.com/filipeportela01/ConnectEaseDesktop/blob/master/PRIVACY.md';
+const kUpstreamUrl = 'https://github.com/rustdesk/rustdesk';
+const kEnableVoiceCall = false;
+const kEnableViewCamera = false;

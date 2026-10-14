@@ -1,9 +1,7 @@
 name: Flutter Nightly Build
 
 on:
-  schedule:
-    # schedule build every night
-    - cron: "0 0 * * *"
+  # ConnectEaseDesktop: sem cron; rodar manualmente em Actions > Run workflow
   workflow_dispatch:
 
 jobs:

@@ -1,0 +1,21 @@
+ConnectEaseDesktop
+Copyright (C) 2026 ION Sistemas
+
+Este produto é uma obra derivada do RustDesk:
+  RustDesk - Copyright (C) Purslane Tech Pte. Ltd. e contribuidores
+  https://github.com/rustdesk/rustdesk
+
+Licença: GNU Affero General Public License v3.0 (AGPL-3.0), ver o arquivo LICENCE.
+Código-fonte completo: https://github.com/filipeportela01/ConnectEaseDesktop
+
+"RustDesk" é marca de seus respectivos titulares. ConnectEaseDesktop não é
+afiliado, endossado ou mantido pela equipe do RustDesk.
+
+Principais modificações em relação ao RustDesk:
+  - Nome, ícones e tema (branco e laranja #FF6A00) próprios.
+  - Servidor de rendezvous e chave pública definidos em tempo de compilação
+    (variáveis RENDEZVOUS_SERVER e RS_PUB_KEY).
+  - Chamada de voz e visualização de câmera desativadas.
+  - Pipeline de build ajustado para Android, iOS e Windows.
+
+Os avisos de copyright presentes nos arquivos de origem foram preservados.

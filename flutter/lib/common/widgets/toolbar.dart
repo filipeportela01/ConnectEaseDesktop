@@ -286,7 +286,7 @@ void showWaylandKeyboardInputWarningDialog(
                     }
                   },
             style: TextButton.styleFrom(
-              foregroundColor: Colors.blue,
+              foregroundColor: MyTheme.accent,
               padding: EdgeInsets.zero,
               minimumSize: Size.zero,
               tapTargetSize: MaterialTapTargetSize.shrinkWrap,
@@ -464,11 +464,13 @@ List<TTextMenu> toolbarControls(BuildContext context, String id, FFI ffi) {
           child: Text(translate('Transfer file')),
           onPressed: () => connectWithToken(isFileTransfer: true)),
     );
-    v.add(
-      TTextMenu(
-          child: Text(translate('View camera')),
-          onPressed: () => connectWithToken(isViewCamera: true)),
-    );
+    if (kEnableViewCamera) {
+      v.add(
+        TTextMenu(
+            child: Text(translate('View camera')),
+            onPressed: () => connectWithToken(isViewCamera: true)),
+      );
+    }
     v.add(
       TTextMenu(
           child: Text('${translate('Terminal')} (beta)'),
