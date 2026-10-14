@@ -539,7 +539,6 @@ if __name__ == "__main__":
     if not init_global_vars(dist_dir, app_name, args):
         sys.exit(-1)
 
-    update_license_file(app_name)
 
     if not gen_pre_vars(args, dist_dir):
         sys.exit(-1)

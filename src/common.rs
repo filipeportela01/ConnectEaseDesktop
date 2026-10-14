@@ -1144,7 +1144,10 @@ fn get_api_server_(api: String, custom: String) -> String {
     if !api.is_empty() {
         return api.to_owned();
     }
-    let s0 = get_custom_rendezvous_server(custom);
+    let mut s0 = get_custom_rendezvous_server(custom);
+    if s0.is_empty() {
+        s0 = crate::brand::rendezvous_server().unwrap_or_default().to_owned();
+    }
     if !s0.is_empty() {
         let s = crate::increase_port(&s0, -2);
         if s == s0 {
