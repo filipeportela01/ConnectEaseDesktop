@@ -82,7 +82,7 @@ pub static ref T: std::collections::HashMap<&'static str, &'static str> =
         ("Audio Capture", "Audio capture"),
         ("Open System Setting", "Open system setting"),
         ("android_input_permission_tip1", "RustDesk uses the Accessibility service only to perform the taps and gestures sent by the technician during a remote session you have accepted, and to read the screen content needed for that control. No data obtained through this service is collected, stored or shared. You can turn it off at any time."),
-        ("android_input_permission_tip2", "Please go to the next system settings page, find and enter [Installed Services], turn on [RustDesk Input] service."),
+        ("android_input_permission_tip2", "Please go to the next system settings page, find and enter [Installed Services], turn on [RustDesk Input] service. If \"Restricted setting\" appears, open Settings > Apps > RustDesk > ⋮ > Allow restricted settings and try again."),
         ("android_new_connection_tip", "New control request has been received, which wants to control your current device."),
         ("android_service_will_start_tip", "Turning on \"Screen capture\" will automatically start the service, allowing other devices to request a connection to your device."),
         ("android_stop_service_tip", "Closing the service will automatically close all established connections and turn off the remote control (Accessibility) permission."),

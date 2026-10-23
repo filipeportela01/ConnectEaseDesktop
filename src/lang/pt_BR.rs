@@ -277,7 +277,7 @@ pub static ref T: std::collections::HashMap<&'static str, &'static str> =
         ("Open System Setting", "Abrir Configurações do Sistema"),
         ("How to get Android input permission?", "Como habilitar a permissão de entrada do Android?"),
         ("android_input_permission_tip1", "O RustDesk usa o serviço de Acessibilidade apenas para executar toques e gestos enviados pelo técnico durante uma sessão de acesso remoto que você aceitou, e para ler o conteúdo da tela necessário a esse controle. Nenhum dado obtido por esse serviço é coletado, armazenado ou compartilhado. Você pode desativá-lo a qualquer momento."),
-        ("android_input_permission_tip2", "Por favor vá para a próxima página de configuração do sistema, encontre e entre [Serviços Instalados], HABILITE o serviço [RustDesk Input]."),
+        ("android_input_permission_tip2", "Por favor vá para a próxima página de configuração do sistema, encontre e entre [Serviços Instalados], HABILITE o serviço [RustDesk Input]. Se aparecer \"Configuração restrita\", abra Configurações > Apps > RustDesk > ⋮ > Permitir configurações restritas e tente novamente."),
         ("android_new_connection_tip", "Nova requisição de controle recebida, solicita o controle de seu dispositivo atual."),
         ("android_service_will_start_tip", "Habilitar a Captura de Tela irá automaticamente inicalizar o serviço, permitindo que outros dispositivos solicitem uma conexão deste dispositivo."),
         ("android_stop_service_tip", "Fechar o serviço irá automaticamente fechar todas as conexões estabelecidas e desativar a permissão de controle remoto (Acessibilidade)."),
