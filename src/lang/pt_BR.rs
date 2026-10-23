@@ -280,7 +280,7 @@ pub static ref T: std::collections::HashMap<&'static str, &'static str> =
         ("android_input_permission_tip2", "Por favor vá para a próxima página de configuração do sistema, encontre e entre [Serviços Instalados], HABILITE o serviço [RustDesk Input]."),
         ("android_new_connection_tip", "Nova requisição de controle recebida, solicita o controle de seu dispositivo atual."),
         ("android_service_will_start_tip", "Habilitar a Captura de Tela irá automaticamente inicalizar o serviço, permitindo que outros dispositivos solicitem uma conexão deste dispositivo."),
-        ("android_stop_service_tip", "Fechar o serviço irá automaticamente fechar todas as conexões estabelecidas."),
+        ("android_stop_service_tip", "Fechar o serviço irá automaticamente fechar todas as conexões estabelecidas e desativar a permissão de controle remoto (Acessibilidade)."),
         ("android_version_audio_tip", "A versão atual do Android não suporta captura de áudio, por favor atualize para o Android 10 ou superior."),
         ("android_start_service_tip", "Toque em [Iniciar Serviço] ou habilite a permissão [Captura de Tela] para iniciar o serviço de compartilhamento de tela."),
         ("android_permission_may_not_change_tip", "As permissões para conexões estabelecidas podem não ser alteradas instantaneamente até que seja reconectado."),

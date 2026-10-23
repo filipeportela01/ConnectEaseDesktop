@@ -29,6 +29,7 @@ class ServerModel with ChangeNotifier {
   bool _mediaOk = false;
   bool _inputOk = false;
   bool _audioOk = false;
+  bool _inputAfterStart = false;
   bool _fileOk = false;
   bool _clipboardOk = false;
   bool _showElevation = false;
@@ -424,6 +425,7 @@ class ServerModel with ChangeNotifier {
         );
       });
       if (res == true) {
+        _inputAfterStart = true;
         startService();
       }
     }
@@ -446,6 +448,10 @@ class ServerModel with ChangeNotifier {
   /// Stop the screen sharing service.
   Future<void> stopService() async {
     _isStart = false;
+    _inputAfterStart = false;
+    if (_inputOk) {
+      parent.target?.invokeMethod("stop_input");
+    }
     closeAll();
     await parent.target?.invokeMethod("stop_service");
     await bind.mainStopService();
@@ -469,6 +475,12 @@ class ServerModel with ChangeNotifier {
         _mediaOk = value;
         if (value && !_isStart) {
           startService();
+        }
+        if (value && _inputAfterStart) {
+          _inputAfterStart = false;
+          if (!_inputOk && parent.target != null) {
+            showInputWarnAlert(parent.target!);
+          }
         }
         break;
       case "input":
