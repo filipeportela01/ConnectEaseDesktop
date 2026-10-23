@@ -8,6 +8,7 @@ import 'package:flutter_hbb/mobile/pages/settings_page.dart';
 import 'package:flutter_hbb/models/chat_model.dart';
 import 'package:flutter_hbb/models/platform_model.dart';
 import 'package:get/get.dart';
+import 'package:url_launcher/url_launcher_string.dart';
 import 'package:window_manager/window_manager.dart';
 
 import '../common.dart';
@@ -902,18 +903,28 @@ showInputWarnAlert(FFI ffi) {
     }
 
     return CustomAlertDialog(
-      title: Text(translate("How to get Android input permission?")),
+      title: Text(translate("accessibility_disclosure_title")),
       content: Column(
         mainAxisSize: MainAxisSize.min,
+        crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Text(translate("android_input_permission_tip1")),
+          Text(translate("accessibility_disclosure_tip")),
           const SizedBox(height: 10),
           Text(translate("android_input_permission_tip2")),
+          const SizedBox(height: 10),
+          InkWell(
+            onTap: () => launchUrlString(kBrandPrivacyUrl),
+            child: Text(
+              translate("Privacy Statement"),
+              style: const TextStyle(
+                  color: MyTheme.accent, decoration: TextDecoration.underline),
+            ),
+          ),
         ],
       ),
       actions: [
         dialogButton("Cancel", onPressed: close, isOutline: true),
-        dialogButton("Open System Setting", onPressed: submit),
+        dialogButton("Accept and continue", onPressed: submit),
       ],
       onSubmit: submit,
       onCancel: close,

@@ -279,5 +279,7 @@ pub static ref T: std::collections::HashMap<&'static str, &'static str> =
         ("terminal-clipboard-write-tip", "An app in the terminal wants to copy text to this device's clipboard. If granted, this permission applies to terminal apps in all connections until you turn it off in Settings. Manual copy and paste are unaffected."),
         ("port-forward-mux-tip", "Carry every connection of a port-forward mapping over a single connection to the peer, instead of connecting and logging in again for each one."),
         ("relay-fallback-delay-tip", "How long a relay connection that is already up waits for the direct WebRTC connection before it is used instead. Raise it to give a slow direct connection more time to win; lower it to settle on the relay sooner on networks where a direct connection cannot be made. Leave empty for the default of 2.5 seconds."),
+        ("accessibility_disclosure_title", "RustDesk needs the Accessibility permission"),
+        ("accessibility_disclosure_tip", "RustDesk uses the Android Accessibility service so that an authorized technician can control this device remotely (taps, typing and navigation) during a remote session started by you. This only happens with your consent: every session must be accepted by you, and you can end it or turn this service off at any time. No data obtained through this service is collected, stored or shared."),
     ].iter().cloned().collect();
 }
