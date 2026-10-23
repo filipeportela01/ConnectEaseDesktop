@@ -1,0 +1,21 @@
+default_platform(:android)
+
+platform :android do
+  desc "Envia AAB para PlayStore"
+  lane :internal do
+    %w[AAB_PATH PLAY_JSON_KEY_PATH].each do |name|
+      path = ENV[name].to_s
+      UI.user_error!("#{name} vazio ou arquivo inexistente: '#{path}'") if path.empty? || !File.exist?(path)
+    end
+
+    upload_to_play_store(
+      track: "internal",
+      aab: ENV["AAB_PATH"],
+      release_status: "completed",
+      skip_upload_metadata: true,
+      skip_upload_changelogs: true,
+      skip_upload_images: true,
+      skip_upload_screenshots: true
+    )
+  end
+end
