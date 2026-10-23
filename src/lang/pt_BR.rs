@@ -280,7 +280,7 @@ pub static ref T: std::collections::HashMap<&'static str, &'static str> =
         ("android_input_permission_tip2", "Por favor vá para a próxima página de configuração do sistema, encontre e entre [Serviços Instalados], HABILITE o serviço [RustDesk Input]."),
         ("android_new_connection_tip", "Nova requisição de controle recebida, solicita o controle de seu dispositivo atual."),
         ("android_service_will_start_tip", "Habilitar a Captura de Tela irá automaticamente inicalizar o serviço, permitindo que outros dispositivos solicitem uma conexão deste dispositivo."),
-        ("android_stop_service_tip", "Fechar o serviço irá automaticamente fechar todas as conexões estabelecidas."),
+        ("android_stop_service_tip", "Fechar o serviço irá automaticamente fechar todas as conexões estabelecidas e desativar a permissão de controle remoto (Acessibilidade)."),
         ("android_version_audio_tip", "A versão atual do Android não suporta captura de áudio, por favor atualize para o Android 10 ou superior."),
         ("android_start_service_tip", "Toque em [Iniciar Serviço] ou habilite a permissão [Captura de Tela] para iniciar o serviço de compartilhamento de tela."),
         ("android_permission_may_not_change_tip", "As permissões para conexões estabelecidas podem não ser alteradas instantaneamente até que seja reconectado."),
@@ -780,6 +780,9 @@ pub static ref T: std::collections::HashMap<&'static str, &'static str> =
         ("RustDesk could not load a GStreamer component needed for screen capture ({})", "O RustDesk não conseguiu carregar um componente do GStreamer necessário para a captura de tela ({})."),
         ("Relay fallback delay in seconds", "Atraso antes de recorrer ao retransmissor em segundos"),
         ("relay-fallback-delay-tip", "Tempo que a conexão de retransmissão aguarda pela conexão direta WebRTC. Aumente para dar mais tempo a conexões lentas; diminua para usar o retransmissor mais cedo. Deixe vazio para usar o padrão de 2,5 segundos."),
-        ("To start a voice call, enable \"Audio capture\" on the \"Share screen\" page.", "Para iniciar uma chamada de voz, ative \"Captura de áudio\" na página \"Compartilhar Tela\".")
+        ("To start a voice call, enable \"Audio capture\" on the \"Share screen\" page.", "Para iniciar uma chamada de voz, ative \"Captura de áudio\" na página \"Compartilhar Tela\"."),
+        ("accessibility_disclosure_title", "O RustDesk precisa da permissão de Acessibilidade"),
+        ("accessibility_disclosure_tip", "O RustDesk usa o serviço de Acessibilidade do Android para que um técnico autorizado possa controlar este aparelho remotamente (toques, digitação e navegação) durante uma sessão iniciada por você. Isso só acontece com o seu consentimento: cada sessão precisa ser aceita por você, e você pode encerrá-la ou desativar este serviço a qualquer momento. Nenhum dado obtido por este serviço é coletado, armazenado ou compartilhado."),
+        ("Accept and continue", "Aceitar e continuar"),
     ].iter().cloned().collect();
 }

@@ -8,6 +8,7 @@ import 'package:flutter_hbb/mobile/pages/settings_page.dart';
 import 'package:flutter_hbb/models/chat_model.dart';
 import 'package:flutter_hbb/models/platform_model.dart';
 import 'package:get/get.dart';
+import 'package:url_launcher/url_launcher_string.dart';
 import 'package:window_manager/window_manager.dart';
 
 import '../common.dart';
@@ -28,6 +29,7 @@ class ServerModel with ChangeNotifier {
   bool _mediaOk = false;
   bool _inputOk = false;
   bool _audioOk = false;
+  bool _inputAfterStart = false;
   bool _fileOk = false;
   bool _clipboardOk = false;
   bool _showElevation = false;
@@ -423,6 +425,7 @@ class ServerModel with ChangeNotifier {
         );
       });
       if (res == true) {
+        _inputAfterStart = true;
         startService();
       }
     }
@@ -445,6 +448,10 @@ class ServerModel with ChangeNotifier {
   /// Stop the screen sharing service.
   Future<void> stopService() async {
     _isStart = false;
+    _inputAfterStart = false;
+    if (_inputOk) {
+      parent.target?.invokeMethod("stop_input");
+    }
     closeAll();
     await parent.target?.invokeMethod("stop_service");
     await bind.mainStopService();
@@ -468,6 +475,12 @@ class ServerModel with ChangeNotifier {
         _mediaOk = value;
         if (value && !_isStart) {
           startService();
+        }
+        if (value && _inputAfterStart) {
+          _inputAfterStart = false;
+          if (!_inputOk && parent.target != null) {
+            showInputWarnAlert(parent.target!);
+          }
         }
         break;
       case "input":
@@ -902,18 +915,28 @@ showInputWarnAlert(FFI ffi) {
     }
 
     return CustomAlertDialog(
-      title: Text(translate("How to get Android input permission?")),
+      title: Text(translate("accessibility_disclosure_title")),
       content: Column(
         mainAxisSize: MainAxisSize.min,
+        crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Text(translate("android_input_permission_tip1")),
+          Text(translate("accessibility_disclosure_tip")),
           const SizedBox(height: 10),
           Text(translate("android_input_permission_tip2")),
+          const SizedBox(height: 10),
+          InkWell(
+            onTap: () => launchUrlString(kBrandPrivacyUrl),
+            child: Text(
+              translate("Privacy Statement"),
+              style: const TextStyle(
+                  color: MyTheme.accent, decoration: TextDecoration.underline),
+            ),
+          ),
         ],
       ),
       actions: [
         dialogButton("Cancel", onPressed: close, isOutline: true),
-        dialogButton("Open System Setting", onPressed: submit),
+        dialogButton("Accept and continue", onPressed: submit),
       ],
       onSubmit: submit,
       onCancel: close,
