@@ -1,4 +1,4 @@
-package com.carriez.flutter_hbb
+package com.ion.connecteasedesktop
 
 /**
  * Handle events from flutter
@@ -436,7 +436,7 @@ class MainActivity : FlutterActivity() {
                             var errorCode = "import_failed"
                             try {
                                 val temporaryFile = File.createTempFile(
-                                    ".rustdesk-import-",
+                                    ".connectease-import-",
                                     ".tmp",
                                     destination.parentFile
                                 )
@@ -540,7 +540,7 @@ class MainActivity : FlutterActivity() {
                                 val parent = destination.parentFile
                                     ?: throw IllegalStateException("The destination has no parent")
                                 temporary = File.createTempFile(
-                                    ".rustdesk-import-dir-",
+                                    ".connectease-import-dir-",
                                     ".tmp",
                                     parent
                                 ).also {
@@ -556,7 +556,7 @@ class MainActivity : FlutterActivity() {
                                         throw IllegalStateException("The destination already exists")
                                     }
                                     val backupFile = File.createTempFile(
-                                        ".rustdesk-import-backup-",
+                                        ".connectease-import-backup-",
                                         ".tmp",
                                         parent
                                     )

@@ -131,11 +131,21 @@ class PlatformFFI {
       _ffiBind.sessionRegisterGpuTexture(
           sessionId: sessionId, display: display, ptr: ptr);
 
+  /// Android: libconnectease.so, ou librustdesk.so enquanto o build usar o nome antigo.
+  /// Já carregada pelo FFI.kt, então o open só pega o handle.
+  static DynamicLibrary _openAndroidCoreLib() {
+    try {
+      return DynamicLibrary.open('libconnectease.so');
+    } catch (_) {
+      return DynamicLibrary.open('librustdesk.so');
+    }
+  }
+
   /// Init the FFI class, loads the native Rust core library.
   Future<void> init(String appType) async {
     _appType = appType;
     final dylib = isAndroid
-        ? DynamicLibrary.open('librustdesk.so')
+        ? _openAndroidCoreLib()
         : isLinux
             ? _openLinuxCoreLib()
             : isWindows
