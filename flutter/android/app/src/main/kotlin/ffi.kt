@@ -5,11 +5,17 @@ package ffi
 import android.content.Context
 import java.nio.ByteBuffer
 
-import com.carriez.flutter_hbb.RdClipboardManager
+import com.ion.connecteasedesktop.RdClipboardManager
 
 object FFI {
     init {
-        System.loadLibrary("rustdesk")
+        // libconnectease.so (nome novo, sem a marca do RustDesk); cai no librustdesk.so
+        // enquanto o build ainda copiar a lib com o nome antigo para jniLibs.
+        try {
+            System.loadLibrary("connectease")
+        } catch (e: UnsatisfiedLinkError) {
+            System.loadLibrary("rustdesk")
+        }
     }
 
     external fun init(ctx: Context)
