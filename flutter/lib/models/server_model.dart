@@ -914,6 +914,12 @@ showInputWarnAlert(FFI ffi) {
       close();
     }
 
+    // Android 13+: app instalado fora da Play cai em "Configuração restrita";
+    // a liberação fica no menu ⋮ da tela de informações do app.
+    openAppInfo() {
+      AndroidPermissionManager.startAction(kActionApplicationDetailsSettings);
+    }
+
     return CustomAlertDialog(
       title: Text(translate("accessibility_disclosure_title")),
       content: Column(
@@ -936,6 +942,7 @@ showInputWarnAlert(FFI ffi) {
       ),
       actions: [
         dialogButton("Cancel", onPressed: close, isOutline: true),
+        dialogButton("Open app info", onPressed: openAppInfo, isOutline: true),
         dialogButton("Accept and continue", onPressed: submit),
       ],
       onSubmit: submit,
